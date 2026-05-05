@@ -229,6 +229,10 @@ select {
   gap: 16px;
 }
 
+.compact-cards {
+  margin-bottom: 24px;
+}
+
 .card {
   padding: 20px;
 }
