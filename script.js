@@ -42,16 +42,26 @@ const itineraries = {
 };
 
 document.querySelector("#buildTrip").addEventListener("click", () => {
+  updateItinerary();
+});
+
+document.querySelector("#tripType").addEventListener("change", updateItinerary);
+document.querySelector("#tripLength").addEventListener("change", updateItinerary);
+
+function updateItinerary() {
   const type = document.querySelector("#tripType").value;
   const length = document.querySelector("#tripLength").value;
   const list = document.querySelector("#itineraryList");
+  const title = document.querySelector("#itineraryTitle");
   list.innerHTML = "";
+  const label = document.querySelector(`#tripType option[value="${type}"]`).textContent.toLowerCase();
+  title.textContent = `Suggested ${length}-day ${label} itinerary`;
   itineraries[type][length].forEach((item) => {
     const li = document.createElement("li");
     li.textContent = item;
     list.appendChild(li);
   });
-});
+}
 
 document.querySelectorAll(".filter").forEach((button) => {
   button.addEventListener("click", () => {
@@ -68,9 +78,25 @@ document.querySelectorAll(".save").forEach((button) => {
   button.addEventListener("click", () => {
     const saved = button.classList.toggle("saved");
     button.textContent = saved ? "Saved" : "Save";
+    updateSavedActivities();
     showToast(saved ? "Activity saved to itinerary" : "Activity removed from itinerary");
   });
 });
+
+function updateSavedActivities() {
+  const savedList = document.querySelector("#savedActivities");
+  const empty = document.querySelector("#savedEmpty");
+  savedList.innerHTML = "";
+  const savedItems = [...document.querySelectorAll(".activity")]
+    .filter((activity) => activity.querySelector(".save").classList.contains("saved"))
+    .map((activity) => activity.querySelector("h3").textContent);
+  empty.style.display = savedItems.length ? "none" : "block";
+  savedItems.forEach((item) => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    savedList.appendChild(li);
+  });
+}
 
 document.querySelectorAll("[data-toast]").forEach((button) => {
   button.addEventListener("click", () => showToast(button.dataset.toast));

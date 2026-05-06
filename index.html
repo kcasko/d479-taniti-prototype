@@ -53,7 +53,7 @@
           Length of stay
           <select id="tripLength">
             <option value="3">3 days</option>
-            <option value="5">5 days</option>
+            <option value="5" selected>5 days</option>
             <option value="7">7 days</option>
             <option value="14">14 days</option>
           </select>
@@ -61,11 +61,13 @@
         <button class="button primary" type="button" id="buildTrip">Build sample itinerary</button>
       </form>
       <div class="itinerary" aria-live="polite">
-        <h3>Suggested itinerary</h3>
+        <h3 id="itineraryTitle">Suggested 5-day family vacation itinerary</h3>
         <ol id="itineraryList">
-          <li>Day 1: Arrive, check in, and walk Yellow Leaf Bay.</li>
-          <li>Day 2: Beach morning and local history museum.</li>
-          <li>Day 3: Merriton Landing restaurants and evening entertainment.</li>
+          <li>Day 1: Arrive and explore Taniti City.</li>
+          <li>Day 2: Beach and history museum.</li>
+          <li>Day 3: Rainforest hike.</li>
+          <li>Day 4: Merriton Landing activities.</li>
+          <li>Day 5: Boat tour and departure.</li>
         </ol>
       </div>
     </section>
@@ -137,6 +139,11 @@
           <button type="button" class="save">Save</button>
         </article>
       </div>
+      <div class="saved-panel" aria-live="polite">
+        <h3>Saved activities</h3>
+        <p id="savedEmpty">No activities saved yet.</p>
+        <ul id="savedActivities"></ul>
+      </div>
     </section>
 
     <section id="booking-links" class="section" aria-labelledby="booking-title">
@@ -146,17 +153,17 @@
       <div class="cards compact-cards">
         <article class="card">
           <h3>Yellow Leaf Bay Hotel</h3>
-          <p>Family-friendly hotel near Taniti City beaches.</p>
+          <p>Family-friendly hotel near Taniti City beaches. Estimated price range: $$.</p>
           <button class="button secondary" type="button" data-toast="Prototype booking selected: Yellow Leaf Bay Hotel">Select hotel</button>
         </article>
         <article class="card">
           <h3>Merriton Landing Inn</h3>
-          <p>Small hotel near restaurants, tours, and evening entertainment.</p>
+          <p>Small hotel near restaurants, tours, and evening entertainment. Estimated price range: $.</p>
           <button class="button secondary" type="button" data-toast="Prototype booking selected: Merriton Landing Inn">Select hotel</button>
         </article>
         <article class="card">
           <h3>Taniti Four-Star Resort</h3>
-          <p>Resort lodging option for visitors who want more amenities.</p>
+          <p>Resort lodging option for visitors who want more amenities. Estimated price range: $$$.</p>
           <button class="button secondary" type="button" data-toast="Prototype booking selected: Taniti Four-Star Resort">Select hotel</button>
         </article>
       </div>
@@ -212,6 +219,10 @@
       <details>
         <summary>Is Taniti safe?</summary>
         <p>Violent crime is rare, but visitors should watch for pickpocketing as tourism increases.</p>
+      </details>
+      <details>
+        <summary>What medical help is available?</summary>
+        <p>Taniti has one hospital and several clinics. The hospital has many multilingual employees.</p>
       </details>
     </section>
   </main>

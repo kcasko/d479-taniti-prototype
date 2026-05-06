@@ -181,7 +181,8 @@ a {
 .itinerary,
 .card,
 .activity,
-.transport-options {
+.transport-options,
+.saved-panel {
   border: 1px solid var(--line);
   border-radius: 4px;
   background: white;
@@ -254,6 +255,19 @@ select {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
+}
+
+.saved-panel {
+  margin-top: 16px;
+  padding: 18px;
+}
+
+.saved-panel h3 {
+  margin-top: 0;
+}
+
+.saved-panel ul {
+  margin-bottom: 0;
 }
 
 .activity {
